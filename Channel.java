@@ -12,7 +12,7 @@ public class Channel {
 	}
 	
 	public void toggle() {
-		enable = !enable;
+		enable = true;
 	}
 	
 	public void trigger() {

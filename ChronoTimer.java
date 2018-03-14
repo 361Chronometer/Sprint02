@@ -57,14 +57,14 @@ public class ChronoTimer {
 	}
 	
 	public void connectChannel(int n, String s) {
-		if (n == 1) c1.connect(s);
-		else if (n == 2) c2.connect(s);
+		if (n == 1 || n == 4) c1.connect(s);
+		else if (n == 2 || n == 4) c2.connect(s);
 		printConsole("channel " + n + " is now connected to " + s);
 	}
 	
 	public void toggle(int n){
-		if (n == 1) c1.toggle();
-		else if (n == 2) c2.toggle();
+		if (n == 1 || n == 4) c1.toggle();
+		else if (n == 2 || n == 4) c2.toggle();
 		printConsole("channel " + n + " is ready to record time.");
 	}
 	
@@ -93,9 +93,9 @@ public class ChronoTimer {
 	
 	public void trigger(int c, String s) {
 		
-		if (c == 1) {
+		if (c == 1 || c == 3) {
 			if (!c1.enable) {
-				printConsole("Channel 1 is not active");
+				printConsole("Channel" + c + " is not active");
 			}
 			if (!queued.isEmpty()) {
 				Racer r = queued.remove(0);
@@ -107,9 +107,9 @@ public class ChronoTimer {
 				printConsole("There are no racers queued to start.");
 			}
 		}
-		else if (c == 2) {
+		else if (c == 2 || c == 4) {
 			if (!c2.enable) {
-				printConsole("Channel 2 is not active");
+				printConsole("Channel 4 is not active");
 			}
 			if (!running.isEmpty()) {
 				Racer r = running.remove(0);
@@ -122,7 +122,7 @@ public class ChronoTimer {
 			}
 		}
 		else {
-			printConsole("Only channels 1 & 2 are being used.");
+			printConsole("Only channels 1, 2, 3 and 4 are being used.");
 		}
 	}
 	
